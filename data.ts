@@ -68,7 +68,7 @@ export interface Question {
   export const timeLimit: number = 5 * 60;
   export const savedResults: { [key: number]: number } = JSON.parse(localStorage.getItem('testResults') || '{}');
   
-  export function setCurrentTest(test: Test): void {
+  export function setCurrentTest(test: Test | null): void {
     currentTest = test;
   }
   
