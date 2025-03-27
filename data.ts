@@ -27,7 +27,7 @@ export interface Question {
     {
       id: 2,
       name: "Тест 2",
-      description: "Описание второго теста.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
       questions: [
         { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
         { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
@@ -39,7 +39,7 @@ export interface Question {
     {
         id: 3,
         name: "Test",
-        description: "Описание второго теста.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
         questions: [
             { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
             { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
@@ -51,7 +51,7 @@ export interface Question {
       {
         id: 4,
         name: "Название теста",
-        description: "Описание второго теста.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
         questions: [
             { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
             { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
