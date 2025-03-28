@@ -26,3 +26,4 @@ import { Test, tests } from './tests.ts'
     savedResults[testId] = result;
     localStorage.setItem('testResults', JSON.stringify(savedResults));
   }
+  export { tests };

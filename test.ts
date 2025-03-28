@@ -9,7 +9,7 @@ function startTimer(content: HTMLElement, onFinish: () => void): void {
     timeLeft--;
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
-    timerDisplay.textContent = `Осталось времени: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 
     if (timeLeft <= 0) {
       clearInterval(timer);
