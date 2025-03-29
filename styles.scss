@@ -81,6 +81,17 @@ html {
       padding: $tiny-spacing;
     }
   }
+  @media (orientation :portrait) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid $border-color;
+    padding: $small-spacing;
+    max-height: 30vh;
+
+    &--collapsed {
+      max-height: 50px;
+    }
+  }
 
   &__header {
     display: flex;
@@ -104,8 +115,13 @@ html {
     margin: 0;
   }
 
-  &__nav {
-    // Обёртка для меню
+  &__list{
+    @media (orientation : portrait) {
+      display: flex;
+      gap: $tiny-spacing;
+      list-style: none;
+      justify-content: space-between;
+    }
   }
 
   &__list {
