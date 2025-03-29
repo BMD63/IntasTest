@@ -1,15 +1,16 @@
-import { currentTest, answers, timeLimit, setTimer, clearTimer, resetAnswers, setCurrentTest } from './data.ts';
+import { currentTest, answers, timeLimit, setTimer, clearTimer, resetAnswers, setCurrentTest, setTimeLeft } from './data.ts';
 import { renderResult } from './result.ts';
 
 function startTimer(content: HTMLElement, onFinish: () => void): void {
   let timeLeft: number = timeLimit;
-  const timerDisplay = content.querySelector('.test__timer') as HTMLElement;
+  const timerDisplay = content.querySelector('.page-header__timer') as HTMLElement;
 
   const timer = setInterval(() => {
     timeLeft--;
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    setTimeLeft(timeLeft);
     
     if (timeLeft <= 0) {
       clearInterval(timer);
@@ -47,15 +48,15 @@ function showConfirmModal(onConfirm: () => void): void {
 export function renderTest(): void {
   const content = document.getElementById('content') as HTMLElement;
   content.innerHTML = `
-    <header class="test__header">
-      <span class="test__exit">Выход</span>
-      <h2 class="test__title">${currentTest!.name}</h2>
-      <div class="test__info">
-        <span class="test__reset">Сбросить все ответы</span>
-        <span class="test__separator">|</span>
-        <span class="test__status">${answers.filter(a => a !== null).length} / 5</span>
-        <span class="test__separator">|</span>
-        <span class="test__timer">${Math.floor(timeLimit / 60)}:${timeLimit % 60 < 10 ? '0' + (timeLimit % 60) : timeLimit % 60}</span>
+    <header class="page-header">
+      <span class="page-header__exit">Выход</span>
+      <h2 class="page-header__title">${currentTest!.name}</h2>
+      <div class="page-header__info">
+        <span class="page-header__reset">Сбросить все ответы</span>
+        <span class="page-header__separator">|</span>
+        <span class="page-header__status">${answers.filter(a => a !== null).length} / ${currentTest!.questions.length}</span>
+        <span class="page-header__separator">|</span>
+        <span class="page-header__timer">${Math.floor(timeLimit / 60)}:${timeLimit % 60 < 10 ? '0' + (timeLimit % 60) : timeLimit % 60}</span>
       </div>
     </header>
     <div class="test__body">
@@ -88,11 +89,11 @@ export function renderTest(): void {
       const selectedOption = parseInt(input.value);
 
       answers[questionIndex] = currentTest!.questions[questionIndex].options[selectedOption];
-      content.querySelector('.test__status')!.textContent = `${answers.filter(a => a !== null).length} / 5`;
+      content.querySelector('.page-header__status')!.textContent = `${answers.filter(a => a !== null).length} / ${currentTest!.questions.length}`;
     });
   });
 
-  content.querySelector('.test__reset')!.addEventListener('click', () => {
+  content.querySelector('.page-header__reset')!.addEventListener('click', () => {
     showConfirmModal(() => {
       clearTimer();
       resetAnswers();
@@ -103,10 +104,14 @@ export function renderTest(): void {
     });
   });
 
-  content.querySelector('.test__exit')!.addEventListener('click', () => {
+  content.querySelector('.page-header__exit')!.addEventListener('click', () => {
     clearTimer();
     setCurrentTest(null);
-    content.innerHTML = '<p>Выберите тест из списка слева.</p>';
+    content.innerHTML = `
+      <div class="welcome">
+        <p>Выберите тест из списка слева.</p>
+      </div>
+    `;
   });
 
   document.getElementById('finishTest')!.addEventListener('click', () => {

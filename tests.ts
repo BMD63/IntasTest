@@ -1,7 +1,7 @@
 export interface Question {
     question: string;
     options: string[];
-    answer: string;
+    correctAnswer: string;
   }
   
   export interface Test {
@@ -17,11 +17,11 @@ export interface Question {
         name: "Test name",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
         questions: [
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
         ]
       },
       {
@@ -29,11 +29,11 @@ export interface Question {
         name: "Тест 2",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
         questions: [
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+          { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
         ]
       },
       {
@@ -41,11 +41,11 @@ export interface Question {
           name: "Test",
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
           questions: [
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
             ]
         },
         {
@@ -53,11 +53,11 @@ export interface Question {
           name: "Название теста",
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam. Donec nec nunc nec nunc ultricies aliquam.",
           questions: [
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
-              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], answer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
+              { question: "Вопрос", options: ["Вариант А", "Вариант Б", "Вариант В", "Вариант Г", "Вариант Д"], correctAnswer: "Вариант А" },
             ]
         },
   ];

@@ -5,32 +5,35 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
 // Переменные
-$primary-color: #4CAF50;
-$primary-hover-color: #45a049;
-$sidebar-bg: #f4f4f4;
-$sidebar-item-bg: #e0e0e0;
-$sidebar-item-hover-bg: #d0d0d0;
+$primary-color: #D32F2F;
+$primary-hover-color: #b71c1c;
+$sidebar-bg: #ECEFF1;
+$sidebar-item-hover-bg: #D32F2F;
 $border-color: #ddd;
-$timer-color: #d32f2f;
 $unanswered-color: #757575;
+$service-text-color: #8D8D8D;
+$main-text-color: #263238;
 $spacing: 20px;
 $small-spacing: 10px;
 $tiny-spacing: 5px;
 $font-size-base: 1rem;
 $font-size-large: 1.125rem;
-$sidebar-width: 200px;
 $sidebar-collapsed-width: 50px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 480px;
 $modal-bg: rgba(0, 0, 0, 0.5);
 $modal-content-bg: #fff;
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-family: 'Nunito', sans-serif;
+  color: $main-text-color;
+}
+
+
 
 // Блок app
 .app {
@@ -45,15 +48,16 @@ $modal-content-bg: #fff;
   }
 }
 
-//  sidebar
+// Блок sidebar
 .sidebar {
-  width: $sidebar-width;
+  width: 200px;
   background-color: $sidebar-bg;
   padding: $spacing;
   border-right: 1px solid $border-color;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transition: width 0.3s ease;
+  flex-shrink: 0;
 
   &--collapsed {
     width: $sidebar-collapsed-width;
@@ -61,7 +65,7 @@ $modal-content-bg: #fff;
   }
 
   @media (max-width: $breakpoint-tablet) {
-    width: 100%;
+    width: 200px;
     border-right: none;
     border-bottom: 1px solid $border-color;
     padding: $small-spacing;
@@ -84,6 +88,7 @@ $modal-content-bg: #fff;
     display: flex;
     align-items: center;
     margin-bottom: $small-spacing;
+    color: #34515E;
   }
 
   &__toggle {
@@ -102,24 +107,23 @@ $modal-content-bg: #fff;
   }
 
   &__nav {
-    //  меню
+    // Обёртка для меню
   }
 
   &__list {
-    list-style: none;
-    padding: 0;
+    list-style: disc;
+    padding-left: 20px;
   }
 
   &__item {
     margin: $small-spacing 0;
     cursor: pointer;
     padding: $small-spacing;
-    background-color: $sidebar-item-bg;
-    border-radius: 4px;
     transition: background-color 0.3s ease;
 
     &:hover {
       background-color: $sidebar-item-hover-bg;
+      color: white;
     }
 
     @media (max-width: $breakpoint-mobile) {
@@ -135,6 +139,10 @@ $modal-content-bg: #fff;
   padding: $spacing;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 
   @media (max-width: $breakpoint-tablet) {
     padding: $small-spacing;
@@ -147,45 +155,31 @@ $modal-content-bg: #fff;
   }
 }
 
-// Блок button
-.button {
-  padding: $small-spacing $spacing;
-  font-size: $font-size-base;
-  cursor: pointer;
-  background-color: $primary-color;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  margin: $small-spacing 0;
-  transition: background-color 0.3s ease;
-  -webkit-appearance: none;
-  appearance: none;
+// Блок welcome
+.welcome {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &:hover {
-    background-color: $primary-hover-color;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    padding: $tiny-spacing $small-spacing;
-    font-size: 0.875rem;
+  p {
+    text-align: center;
   }
 }
 
-// Блок test
-.test {
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $small-spacing 0;
-    border-bottom: 1px solid $border-color;
-    margin-bottom: $spacing;
-  }
+// Блок page-header
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $small-spacing 0;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $spacing;
+  color: $service-text-color;
 
   &__exit {
     cursor: pointer;
     font-size: $font-size-base;
-    color: #333;
     transition: color 0.3s ease;
 
     &:hover {
@@ -198,6 +192,7 @@ $modal-content-bg: #fff;
     text-align: center;
     flex-grow: 1;
     font-size: $font-size-large;
+    color: $main-text-color;
   }
 
   &__info {
@@ -209,7 +204,6 @@ $modal-content-bg: #fff;
 
   &__reset {
     cursor: pointer;
-    color: #333;
     transition: color 0.3s ease;
 
     &:hover {
@@ -218,7 +212,7 @@ $modal-content-bg: #fff;
   }
 
   &__separator {
-    color: #666; // Цвет разделителя
+    color: $service-text-color;
   }
 
   &__status {
@@ -226,10 +220,55 @@ $modal-content-bg: #fff;
   }
 
   &__timer {
-    color: $timer-color;
+    color: $service-text-color; // Таймер служебного цвета
     font-weight: bold;
   }
+}
 
+// Блок description
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  p {
+    margin-bottom: $spacing;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $small-spacing;
+  }
+}
+
+// Блок button
+.button {
+  padding: $small-spacing $spacing;
+  font-size: $font-size-base;
+  cursor: pointer;
+  background-color: transparent;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+  margin: $small-spacing 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $tiny-spacing $small-spacing;
+    font-size: 0.875rem;
+  }
+}
+
+// Блок test
+.test {
   &__body {
     // Контейнер для вопросов и кнопки "Завершить"
   }
@@ -288,17 +327,52 @@ $modal-content-bg: #fff;
 
 // Блок result
 .result {
-  &__unanswered {
-    color: $unanswered-color;
-    font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  border-bottom: 1px solid $service-text-color; // Нижняя граница служебного цвета
 
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 0.875rem;
+  h1 {
+    margin-bottom: $spacing;
+  }
+
+  &__summary {
+    color: $service-text-color;
+    margin-bottom: $small-spacing;
+    text-align: center;
+  }
+
+  &__answers-label {
+    color: $service-text-color;
+    align-self: flex-start;
+    margin-bottom: $small-spacing;
+  }
+
+  &__list {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  &__item {
+    border-bottom: 1px dashed $service-text-color;
+    padding-bottom: $small-spacing;
+    margin-bottom: $small-spacing;
+
+    p {
+      margin: $tiny-spacing 0;
     }
   }
 }
 
-//  modal
+// Блок page-footer
+.page-footer {
+  padding: $small-spacing 0;
+  text-align: left; // Кнопка выравнивается влево
+}
+
+// Блок modal
 .modal {
   position: fixed;
   top: 0;
@@ -330,16 +404,21 @@ $modal-content-bg: #fff;
     margin: 0 $tiny-spacing;
 
     &--confirm {
-      background-color: $primary-color;
+      background-color: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      border-radius: 3px;
 
       &:hover {
-        background-color: $primary-hover-color;
+        background-color: $primary-color;
+        color: white;
       }
     }
 
     &--cancel {
       background-color: #ccc;
       color: #333;
+      border-radius: 3px;
 
       &:hover {
         background-color: #999;

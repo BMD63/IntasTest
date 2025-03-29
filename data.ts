@@ -4,6 +4,7 @@ import { Test, tests } from './tests.ts'
   export let answers: (string | null)[] = Array(5).fill(null);
   export let timer: number | null = null;
   export const timeLimit: number = 5 * 60;
+  export let timeLeft: number = timeLimit;
   export const savedResults: { [key: number]: number } = JSON.parse(localStorage.getItem('testResults') || '{}');
   
   export function setCurrentTest(test: Test | null): void {
@@ -16,6 +17,9 @@ import { Test, tests } from './tests.ts'
   
   export function setTimer(newTimer: number): void {
     timer = newTimer;
+  }
+  export function setTimeLeft(newTimeLeft: number): void {
+    timeLeft = newTimeLeft;
   }
   
   export function clearTimer(): void {

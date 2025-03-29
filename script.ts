@@ -53,6 +53,10 @@ export function renderSidebar(): void {
 
 document.addEventListener('DOMContentLoaded', () => {
   const content = document.getElementById('content') as HTMLElement;
-  content.innerHTML = '<p>Выберите тест из списка слева.</p>';
+  content.innerHTML = `
+    <div class="welcome">
+      <p>Выберите тест из списка слева.</p>
+    </div>
+  `;
   renderSidebar();
 });
