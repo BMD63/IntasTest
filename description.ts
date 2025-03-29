@@ -11,7 +11,7 @@ export function renderDescription(): void {
       <p>${currentTest!.description}</p>
       <div class="description__buttons">
         <button class="button" id="startTest">Начать</button>
-        <button class="button" id="cancelTest">Отмена</button>
+        <button class="button button--cancel" id="cancelTest">Отмена</button>
       </div>
     </div>
   `;

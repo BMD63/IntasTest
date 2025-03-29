@@ -1,11 +1,4 @@
-// Нормализация стилей для кроссбраузерности
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-// Переменные
+// Переменные (перемещены вверх)
 $primary-color: #D32F2F;
 $primary-hover-color: #b71c1c;
 $sidebar-bg: #ECEFF1;
@@ -25,6 +18,13 @@ $breakpoint-mobile: 480px;
 $modal-bg: rgba(0, 0, 0, 0.5);
 $modal-content-bg: #fff;
 
+// Нормализация стилей для кроссбраузерности
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
@@ -32,8 +32,6 @@ html {
   font-family: 'Nunito', sans-serif;
   color: $main-text-color;
 }
-
-
 
 // Блок app
 .app {
@@ -220,7 +218,7 @@ html {
   }
 
   &__timer {
-    color: $service-text-color; // Таймер служебного цвета
+    color: $service-text-color;
     font-weight: bold;
   }
 }
@@ -259,6 +257,16 @@ html {
   &:hover {
     background-color: $primary-color;
     color: white;
+  }
+
+  &--cancel {
+    color: $main-text-color; // Основной цвет текста
+    border: 1px solid #707070; // Новая граница для кнопки "Отмена"
+
+    &:hover {
+      background-color: #707070; // При наведении фон серый
+      color: white;
+    }
   }
 
   @media (max-width: $breakpoint-mobile) {
@@ -331,7 +339,7 @@ html {
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  border-bottom: 1px solid $service-text-color; // Нижняя граница служебного цвета
+  border-bottom: 1px solid $service-text-color;
 
   h1 {
     margin-bottom: $spacing;
@@ -369,7 +377,7 @@ html {
 // Блок page-footer
 .page-footer {
   padding: $small-spacing 0;
-  text-align: left; // Кнопка выравнивается влево
+  text-align: left;
 }
 
 // Блок modal
