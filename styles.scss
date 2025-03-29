@@ -31,6 +31,20 @@ html {
   font-family: 'Nunito', sans-serif;
   color: $main-text-color;
 }
+// Layout
+#mainHeader {
+  color:  #D32F2F; 
+  font-family: 'Rubik', sans-serif; 
+  font-size: 32px;
+  text-align: center; 
+  text-transform: uppercase;
+  margin: 29px auto;
+}
+#mainFooter {
+  color: #263238; 
+  text-align: center;
+  margin: 29px auto; 
+}
 
 // Блок app
 .app {
@@ -38,6 +52,8 @@ html {
   flex-direction: row;
   height: 100vh;
   width: 100%;
+  max-width: 1200px;
+  margin: auto;
   overflow: hidden;
 
   @media (max-width: $breakpoint-tablet) {
@@ -235,7 +251,6 @@ html {
 
   &__timer {
     color: $service-text-color;
-    font-weight: bold;
   }
 }
 
@@ -276,11 +291,11 @@ html {
   }
 
   &--cancel {
-    color: $main-text-color; // Основной цвет текста
-    border: 1px solid #707070; // Новая граница для кнопки "Отмена"
+    color: $main-text-color; 
+    border: 1px solid #707070; 
 
     &:hover {
-      background-color: #707070; // При наведении фон серый
+      background-color: #707070; 
       color: white;
     }
   }
@@ -293,9 +308,6 @@ html {
 
 // Блок test
 .test {
-  &__body {
-    // Контейнер для вопросов и кнопки "Завершить"
-  }
 
   &__question {
     margin: $spacing 0;
