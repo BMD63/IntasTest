@@ -1,22 +1,354 @@
+// Нормализация стилей для кроссбраузерности
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// Переменные
+$primary-color: #4CAF50;
+$primary-hover-color: #45a049;
+$sidebar-bg: #f4f4f4;
+$sidebar-item-bg: #e0e0e0;
+$sidebar-item-hover-bg: #d0d0d0;
+$border-color: #ddd;
+$timer-color: #d32f2f;
+$unanswered-color: #757575;
+$spacing: 20px;
+$small-spacing: 10px;
+$tiny-spacing: 5px;
+$font-size-base: 1rem;
+$font-size-large: 1.125rem;
+$sidebar-width: 200px;
+$sidebar-collapsed-width: 50px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
+$modal-bg: rgba(0, 0, 0, 0.5);
+$modal-content-bg: #fff;
+
+// Блок app
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
   }
-  
-  html {
-    font-size: 15px;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+}
+
+//  sidebar
+.sidebar {
+  width: $sidebar-width;
+  background-color: $sidebar-bg;
+  padding: $spacing;
+  border-right: 1px solid $border-color;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: width 0.3s ease;
+
+  &--collapsed {
+    width: $sidebar-collapsed-width;
+    padding: $small-spacing;
   }
-  .app {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
+
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
-    overflow: hidden;
-  
+    border-right: none;
+    border-bottom: 1px solid $border-color;
+    padding: $small-spacing;
+    max-height: 30vh;
+
+    &--collapsed {
+      max-height: 50px;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $tiny-spacing;
+
+    &--collapsed {
+      padding: $tiny-spacing;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $small-spacing;
+  }
+
+  &__toggle {
+    width: 15px;
+    height: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: $small-spacing;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__nav {
+    //  меню
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    margin: $small-spacing 0;
+    cursor: pointer;
+    padding: $small-spacing;
+    background-color: $sidebar-item-bg;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $sidebar-item-hover-bg;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: $tiny-spacing;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Блок content
+.content {
+  flex-grow: 1;
+  padding: $spacing;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $small-spacing;
+    flex-grow: 0;
+    height: 70vh;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $tiny-spacing;
+  }
+}
+
+// Блок button
+.button {
+  padding: $small-spacing $spacing;
+  font-size: $font-size-base;
+  cursor: pointer;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin: $small-spacing 0;
+  transition: background-color 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:hover {
+    background-color: $primary-hover-color;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $tiny-spacing $small-spacing;
+    font-size: 0.875rem;
+  }
+}
+
+// Блок test
+.test {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $small-spacing 0;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: $spacing;
+  }
+
+  &__exit {
+    cursor: pointer;
+    font-size: $font-size-base;
+    color: #333;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+    font-size: $font-size-large;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: $tiny-spacing;
+    font-size: $font-size-base;
+  }
+
+  &__reset {
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__separator {
+    color: #666; // Цвет разделителя
+  }
+
+  &__status {
+    // Счетчик ответов
+  }
+
+  &__timer {
+    color: $timer-color;
+    font-weight: bold;
+  }
+
+  &__body {
+    // Контейнер для вопросов и кнопки "Завершить"
+  }
+
+  &__question {
+    margin: $spacing 0;
+
+    @media (max-width: $breakpoint-tablet) {
+      margin: $small-spacing 0;
+    }
+  }
+
+  &__options {
+    margin: $small-spacing 0;
+    display: flex;
+    flex-direction: column;
+
+    @media (orientation: landscape) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: $tiny-spacing;
+    }
+
     @media (orientation: portrait) {
       flex-direction: column;
     }
   }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin: $tiny-spacing 0;
+
+    @media (orientation: landscape) {
+      margin: 0 $tiny-spacing;
+      flex: 1 1 auto;
+    }
+
+    @media (orientation: portrait) {
+      margin: $tiny-spacing 0;
+    }
+
+    input[type="radio"] {
+      margin-right: $tiny-spacing;
+      -webkit-appearance: radio;
+      appearance: radio;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: $tiny-spacing;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Блок result
+.result {
+  &__unanswered {
+    color: $unanswered-color;
+    font-style: italic;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+//  modal
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $modal-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  &__content {
+    background-color: $modal-content-bg;
+    padding: $spacing;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 90%;
+    width: 300px;
+  }
+
+  &__text {
+    margin-bottom: $small-spacing;
+    font-size: $font-size-base;
+  }
+
+  &__button {
+    margin: 0 $tiny-spacing;
+
+    &--confirm {
+      background-color: $primary-color;
+
+      &:hover {
+        background-color: $primary-hover-color;
+      }
+    }
+
+    &--cancel {
+      background-color: #ccc;
+      color: #333;
+
+      &:hover {
+        background-color: #999;
+      }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      padding: $tiny-spacing $small-spacing;
+      font-size: 0.875rem;
+    }
+  }
+}

@@ -12,7 +12,7 @@ export function renderSidebar(): void {
       <ul class="sidebar__list">
         ${tests.map(test => `
           <li class="sidebar__item" data-test-id="${test.id}">
-            ${test.name} ${savedResults[test.id] ? `(Результат: ${savedResults[test.id]}/5)` : ''}
+            ${test.name}
           </li>
         `).join('')}
       </ul>

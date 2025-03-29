@@ -1,4 +1,4 @@
-import { currentTest, answers, timeLimit, setTimer, clearTimer, resetAnswers } from './data.ts';
+import { currentTest, answers, timeLimit, setTimer, clearTimer, resetAnswers, setCurrentTest } from './data.ts';
 import { renderResult } from './result.ts';
 
 function startTimer(content: HTMLElement, onFinish: () => void): void {
@@ -10,7 +10,7 @@ function startTimer(content: HTMLElement, onFinish: () => void): void {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-
+    
     if (timeLeft <= 0) {
       clearInterval(timer);
       onFinish();
@@ -19,7 +19,6 @@ function startTimer(content: HTMLElement, onFinish: () => void): void {
   setTimer(timer);
 }
 
-// Модальное окно
 function showConfirmModal(onConfirm: () => void): void {
   const modal = document.createElement('div');
   modal.className = 'modal';
@@ -48,25 +47,34 @@ function showConfirmModal(onConfirm: () => void): void {
 export function renderTest(): void {
   const content = document.getElementById('content') as HTMLElement;
   content.innerHTML = `
-    <h1>${currentTest!.name}</h1>
-    <div class="test__timer">Осталось времени: 5:00</div>
-    <p class="test__status">${answers.filter(a => a !== null).length} / 5</p>
-    ${currentTest!.questions.map((q, index) => `
-      <div class="test__question">
-        <h3> ${index + 1}. Вопрос ${q.question}</h3>
-        <div class="test__options" data-question="${index}">
-          ${q.options.map((opt, optIndex) => `
-            <label class="test__option">
-              <input type="radio" name="question-${index}" value="${optIndex}" 
-                ${answers[index] === opt ? 'checked' : ''}>
-              ${opt}
-            </label>
-          `).join('')}
-        </div>
+    <header class="test__header">
+      <span class="test__exit">Выход</span>
+      <h2 class="test__title">${currentTest!.name}</h2>
+      <div class="test__info">
+        <span class="test__reset">Сбросить все ответы</span>
+        <span class="test__separator">|</span>
+        <span class="test__status">${answers.filter(a => a !== null).length} / 5</span>
+        <span class="test__separator">|</span>
+        <span class="test__timer">${Math.floor(timeLimit / 60)}:${timeLimit % 60 < 10 ? '0' + (timeLimit % 60) : timeLimit % 60}</span>
       </div>
-    `).join('')}
-    <button class="button" id="resetTest">Сбросить все ответы</button>
-    <button class="button" id="finishTest">Завершить</button>
+    </header>
+    <div class="test__body">
+      ${currentTest!.questions.map((q, index) => `
+        <div class="test__question">
+          <h3>${q.question}</h3>
+          <div class="test__options" data-question="${index}">
+            ${q.options.map((opt, optIndex) => `
+              <label class="test__option">
+                <input type="radio" name="question-${index}" value="${optIndex}" 
+                  ${answers[index] === opt ? 'checked' : ''}>
+                ${opt}
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+      <button class="button" id="finishTest">Завершить</button>
+    </div>
   `;
 
   startTimer(content, renderResult);
@@ -84,7 +92,7 @@ export function renderTest(): void {
     });
   });
 
-  document.getElementById('resetTest')!.addEventListener('click', () => {
+  content.querySelector('.test__reset')!.addEventListener('click', () => {
     showConfirmModal(() => {
       clearTimer();
       resetAnswers();
@@ -93,6 +101,12 @@ export function renderTest(): void {
         (radio as HTMLInputElement).checked = false;
       });
     });
+  });
+
+  content.querySelector('.test__exit')!.addEventListener('click', () => {
+    clearTimer();
+    setCurrentTest(null);
+    content.innerHTML = '<p>Выберите тест из списка слева.</p>';
   });
 
   document.getElementById('finishTest')!.addEventListener('click', () => {
