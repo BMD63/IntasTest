@@ -293,6 +293,8 @@ html {
     margin: $small-spacing 0;
     display: flex;
     flex-direction: column;
+    background: #ECEFF1;
+
 
     @media (orientation: landscape) {
       flex-direction: row;

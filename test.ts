@@ -63,7 +63,7 @@ export function renderTest(): void {
       ${currentTest!.questions.map((q, index) => `
         <div class="test__question">
           <h3>${q.question}</h3>
-          <div class="test__options" data-question="${index}">
+          <div class="test__options" ${q.options.length <= 3? 'style="flex-direction: column;"' : ''}data-question="${index}">
             ${q.options.map((opt, optIndex) => `
               <label class="test__option">
                 <input type="radio" name="question-${index}" value="${optIndex}" 
