@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const content = document.getElementById('content') as HTMLElement;
   content.innerHTML = `
     <div class="welcome">
-      <p>Выберите тест из списка слева.</p>
+      <p>Выберите тест из списка</p>
     </div>
   `;
   renderSidebar();

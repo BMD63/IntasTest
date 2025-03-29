@@ -58,7 +58,7 @@ export function renderResult(): void {
     setCurrentTest(null);
     content.innerHTML = `
       <div class="welcome">
-        <p>Выберите тест из списка слева.</p>
+        <p>Выберите тест из списка</p>
       </div>
     `;
     const sidebar = document.getElementById('sidebar') as HTMLElement;
